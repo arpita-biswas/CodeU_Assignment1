@@ -1,5 +1,4 @@
 
-
 //Implementing a linked list
 class LinkedList<T>{
 	Node<T> head;
@@ -29,19 +28,21 @@ class LinkedList<T>{
 	 */
 	public Node<T> kToLast(int k){
 		if(k<0){
-			System.err.println("k must be a non-negative number");
+			System.err.println("k must be a non-negative integer");
 			return null;
 		}
 		
 		Node<T> current = head;
 		for(int i=0; i<k; i++){
 			if(current==null){
-				break; // this condition holds if k>=list.length+1
+				System.err.println("k should be less than or equal to (length(list)-1)");
+				break;
 			}
 			current = current.next;
 		}
 		if(current==null){
-			return null; //this condition holds if k>=list.length 
+			System.err.println("k should be less than or equal to (length(list)-1)");
+			return null;
 		}
 		
 		Node<T> follower = head;
@@ -54,6 +55,7 @@ class LinkedList<T>{
 	
 	public void printList (){
 		Node<T> current = this.head;
+		System.out.print("Linked List: ");
 		while(current!=null){
 			System.out.print(current.data+"->");
 			current = current.next;
@@ -85,29 +87,66 @@ class Node<T>{
 }
 public class q2 {
 	
-	public static int kToLast(LinkedList<Integer> ll, int k){
+	public static int kToLast_int(LinkedList<Integer> ll, int k){
 		Node<Integer> k_node= ll.kToLast(k);
 		if(k_node==null){
-			System.err.println("\nk > length of linked list");
 			System.exit(-1);
 		}
 		else{
 			return k_node.data;
 		}
-		return -1;
-		
+		return -1;		
+	}
+	
+	public static String kToLast_string(LinkedList<String> ll, int k){
+		Node<String> k_node= ll.kToLast(k);
+		if(k_node==null){
+			System.exit(-1);
+		}
+		else{
+			return k_node.data;
+		}
+		return null;		
 	}
 
 	public static void main(String[] args) {
 		LinkedList<Integer> int_ll = new LinkedList<Integer>();
-		for(int i=50; i<51; i++){
+		for(int i=1; i<=10; i++){
 			int_ll.appendLast(i);
 		}
 		int_ll.printList();
-		int k=1;
+		int k=1;		//Output: 9
+		System.out.println("kth to last element (k="+k+"): "+kToLast_int(int_ll, k)); 
 		
-		System.out.println(kToLast(int_ll, k));
-
+		k=0;			//Output: 10
+		System.out.println("kth to last element (k="+k+"): "+kToLast_int(int_ll, k));
+		
+		k=9;			//Output: 1
+		System.out.println("kth to last element (k="+k+"): "+kToLast_int(int_ll, k)+"\n");
+		
+		//The following outputs error statements and terminates:
+		
+//		k=10; //k should be less than or equal to (length(list)-1)
+//		System.out.println("k = "+k);
+//		System.out.println("kth to last element (k="+k+"): "+kToLast_int(int_ll, k)+"\n");
+		
+//		k=-1; //k must be a non-negative integer
+//		System.out.println("k = "+k);
+//		System.out.println("kth to last element (k="+k+"): "+kToLast_int(int_ll, k)+"\n");
+		
+		
+		LinkedList<String> string_ll = new LinkedList<String>();
+		//Error statement:
+//		string_ll.printList(); //Empty linked list
+//		k=0;	//k should be less than or equal to (length(list)-1)
+//		System.out.println("kth to last element (k="+k+"): "+kToLast_string(string_ll, k)+"\n");
+		
+		string_ll.appendLast("apple");
+		string_ll.appendLast("ball");
+		string_ll.appendLast("cat");
+		string_ll.printList();
+		k=2;	
+		System.out.println("kth to last element (k="+k+"): "+kToLast_string(string_ll, k)+"\n");
 	}
 
 }
