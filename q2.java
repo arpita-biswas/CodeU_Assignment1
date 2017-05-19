@@ -94,6 +94,10 @@ class Node<T>{
 public class q2 {
 	
 	public static int kToLast_int(LinkedList<Integer> ll, int k){
+		if(ll == null){
+			System.err.println("NullPointerException: Linked List is not initialized");
+			System.exit(-1); //for invalid values of k, exit
+		}
 		Node<Integer> k_node= ll.kToLast(k);
 		if(k_node==null){
 			System.exit(-1); //for invalid values of k, exit
@@ -105,6 +109,10 @@ public class q2 {
 	}
 	
 	public static String kToLast_string(LinkedList<String> ll, int k){
+		if(ll == null){
+			System.err.println("NullPointerException: Linked List is not initialized");
+			System.exit(-1); //for invalid values of k, exit
+		}
 		Node<String> k_node = ll.kToLast(k);
 		if(k_node == null){
 			System.exit(-1); //for invalid values of k, exit
