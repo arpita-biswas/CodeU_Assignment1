@@ -1,10 +1,9 @@
-
 import java.util.HashMap;
 
 public class q1 {
 	
-	public static void computeCharCount(String s, HashMap<Character, Integer> s_charCount){
-
+	public static HashMap<Character, Integer> computeCharCount(String s){
+		HashMap<Character, Integer> s_charCount = new HashMap<Character, Integer>();
 		for(int i=0; i<s.length(); i++) {
 			char c = s.charAt(i);
 			if(s_charCount.containsKey(c))
@@ -12,6 +11,7 @@ public class q1 {
 			else
 				s_charCount.put(s.charAt(i), 1);
 		}
+		return s_charCount;
 	}
 
 	public static boolean checkPermute(String s1, String s2) {
@@ -37,11 +37,9 @@ public class q1 {
 		// we are comparing characters, so case does not matter
 		s1 = s1.toLowerCase();
 		s2 = s2.toLowerCase();
-		
-		HashMap<Character, Integer> s1_charCount = new HashMap<Character, Integer>();		
-		
+				
 		// compute char count of s1
-		computeCharCount(s1, s1_charCount);
+		 HashMap<Character, Integer> s1_charCount = computeCharCount(s1);
 
 		// compare s2 with s1
 		for(int i=0; i<s2.length(); i++){
@@ -61,7 +59,7 @@ public class q1 {
 		}
 		return true;
 	}
-
+	
 	public static void main(String[] args) {
 
 		String s1;
