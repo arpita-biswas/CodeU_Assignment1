@@ -61,21 +61,61 @@ public class q1 {
 		}
 		return true;
 	}
-	
-	/**
-	* params
-	* args[0] : s1
-	* args[1] : s2
-	*/
+
 	public static void main(String[] args) {
 
-		if(args.length != 2){ 
-			System.err.println("Insufficient number of arguments");
-			return;
-		}
-		System.out.println("s1=*"+args[0]+"*");
-		System.out.println("s2=*"+args[1]+"*");
-		System.out.println("Permutation: " + checkPermute(args[0], args[1]));
+		String s1;
+		String s2;
+		
+		s1 = "Listen";	s2 = "Silent";	//true
+		System.out.println(s1+" , "+s2+" => " + checkPermute(s1, s2));
+		
+		s1 = "12$b";	s2 = "$b12"; 	//true
+		System.out.println(s1+" , "+s2+" => " + checkPermute(s1, s2));
+		
+		s1 = "$b12";	s2 = "12$b"; 	//true
+		System.out.println(s1+" , "+s2+" => " + checkPermute(s1, s2));
+		
+		s1 = "red";	s2 = "zed"; 	//false
+		System.out.println(s1+" , "+s2+" => " + checkPermute(s1, s2));
+		
+			public static void main(String[] args) {
+		String s1;
+		String s2;
+//		if(args.length != 2){ 
+//			System.err.println("Insufficient number of arguments");
+//			return;
+//		}
+//		System.out.println("s1=*"+args[0]+"*");
+//		System.out.println("s2=*"+args[1]+"*");
+		
+		s1 = "Listen";	s2 = "Silent";	//true
+		System.out.println(s1+" , "+s2+" => " + checkPermute(s1, s2));
+		
+		s1 = "12$b";	s2 = "$b12"; 	// true
+		System.out.println(s1+" , "+s2+" => " + checkPermute(s1, s2));
+		
+		s1 = "$b12";	s2 = "12$b"; 	// true
+		System.out.println(s1+" , "+s2+" => " + checkPermute(s1, s2));
+		
+		s1 = "red";	s2 = "zed"; 	//false
+		System.out.println(s1+" , "+s2+" => " + checkPermute(s1, s2));
+				
+		s1 = "blue";	s2 = "red"; 	//false
+		System.out.println(s1+" , "+s2+" => " + checkPermute(s1, s2));
+		
+		s1 = "";	s2 = "";	//true
+		System.out.println(s1+" , "+s2+" => " + checkPermute(s1, s2));
+		
+		s1 = "";	s2 = "34e";	//false
+		System.out.println(s1+" , "+s2+" => " + checkPermute(s1, s2));
+		
+		s1 = "hello world";	s2 = "world hello";	//true
+		System.out.println(s1+" , "+s2+" => " + checkPermute(s1, s2));
+		
+		s1 = null;	s2 = "sc";	//Error statement: invalid input
+		System.out.println(s1+" , "+s2+" => " + checkPermute(s1, s2));
+
 	}
 }
 
